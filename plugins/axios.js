@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-    baseURL: 'http://salat-notifier-api.test/api',
+    baseURL: 'https://prayer-reminder.bongoair.com/api',
     headers: {
         'Content-Type': 'application/json',
     },
