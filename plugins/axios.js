@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-    baseURL: 'https://prayer-reminder.bongoair.com/public/api',
+    baseURL: 'https://prayer-reminder.bongoair.com/api',
     headers: {
         'Content-Type': 'application/json',
     },
