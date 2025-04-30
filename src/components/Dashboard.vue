@@ -3,7 +3,7 @@
     <!-- Header -->
     <header class="bg-gray-800 text-white p-4 flex justify-between items-center">
       <h1 class="text-xl">Dashboard</h1>
-      <img src="" alt="User Logo" class="h-10 w-10 rounded-full" />
+      <img src="https://via.placeholder.com/150" alt="User Logo" class="h-10 w-10 rounded-full" />
     </header>
 
     <div class="flex flex-1">
@@ -12,6 +12,7 @@
         <ul class="list-none p-0 m-0"> <!-- Hide on small screens -->
           <li @click="setActivePage('profile')" :class="['p-2 cursor-pointer rounded transition-colors', activePage === 'profile' ? 'bg-teal-500' : 'hover:bg-gray-700']">Profile</li>
           <li @click="setActivePage('schedules')" :class="['p-2 cursor-pointer rounded transition-colors', activePage === 'schedules' ? 'bg-teal-500' : 'hover:bg-gray-700']">Schedules</li>
+          <li @click="setActivePage('prayercalendar')" :class="['p-2 cursor-pointer rounded transition-colors', activePage === 'prayercalendar' ? 'bg-teal-500' : 'hover:bg-gray-700']">Prayer Calendar</li>
           <li @click="setActivePage('settings')" :class="['p-2 cursor-pointer rounded transition-colors', activePage === 'settings' ? 'bg-teal-500' : 'hover:bg-gray-700']">Settings</li>
           <li @click="logout" class="mt-5 text-red-500 cursor-pointer hover:bg-red-700 p-2 rounded">Logout</li>
         </ul>
@@ -28,6 +29,7 @@
     <footer class="bg-gray-800 text-white p-4 text-center flex justify-around block lg:hidden"> <!-- Show on small screens -->
       <button @click="setActivePage('profile')" class="p-2">Profile</button>
       <button @click="setActivePage('schedules')" class="p-2">Schedules</button>
+      <button @click="setActivePage('prayercalendar')" class="p-2">Prayer Calendar</button>
       <button @click="setActivePage('settings')" class="p-2">Settings</button>
     </footer>
   </div>
@@ -37,6 +39,7 @@
 import { ref, computed } from 'vue';
 import Profile from './Profile.vue';
 import Schedules from './Schedules.vue';
+import PrayerCalendar from './PrayerCalendar.vue';
 import AdminSettings from './AdminSettings.vue';
 import { useRouter } from 'vue-router';
 import apiClient from '../../plugins/axios';
@@ -50,6 +53,7 @@ const activePage = ref('profile');
 const components = {
   profile: Profile,
   schedules: Schedules,
+  prayercalendar: PrayerCalendar,
   settings: AdminSettings,
 };
 
@@ -63,6 +67,8 @@ const pageTitle = computed(() => {
       return 'Profile';
     case 'schedules':
       return 'Schedules';
+    case 'prayercalendar':
+      return 'Prayer Calendar';
     case 'settings':
       return 'AdminSettings';
     default:

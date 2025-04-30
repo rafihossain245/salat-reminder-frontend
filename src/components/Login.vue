@@ -18,8 +18,8 @@
   import apiClient from '../../plugins/axios';
   
   const formData = reactive({
-    email: '',
-    password: '',
+    email: 'rafi@gmail.com',
+    password: '12345678',
   });
   
   const router = useRouter();
@@ -41,6 +41,8 @@
   
   const goToRegister = async () => {
     try{
+        const response = await apiClient.post('/register', formData);
+        alert(response.data.message);
         router.push('/register');
     }catch(error){
         alert('Error registering user!');

@@ -1,30 +1,47 @@
 <template>
-  <div class="p-6 bg-gray-100 rounded-lg shadow-md">
-    <h2 class="text-2xl font-bold mb-6">SALAT TIMES</h2>
-
-    <!-- Display City, Area, Current Time, Date, and Remaining Time -->
-    <div class="mb-6">
-      <p>{{ upazilaName }}, {{ districtName }}</p>
-      <p>{{ currentTime }} - {{ currentDate }}</p>
-      <p>Time Remaining: {{ timeRemaining }}</p>
-      <p>Next Prayer: {{ nextPrayer }}</p>
+  <div class="space-y-6">
+    <div class="bg-white rounded-lg shadow-md">
+      <div class="bg-green-100 p-4 rounded-t-lg">
+        <div class="flex items-center justify-between">
+          <span class="text-lg font-bold">Current Time</span>
+          <span class="text-lg font-bold">{{ currentTime }}</span>
+        </div>
+      </div>
+      <div class="p-4">
+        <div v-if="nextPrayer" class="flex items-center justify-between">
+          <div>
+            <p class="text-sm text-gray-500">Next Prayer</p>
+            <p class="text-xl font-semibold text-green-700">{{ nextPrayer }}</p>
+          </div>
+          <div class="text-right">
+            <p class="text-sm text-gray-500">Time Remaining</p>
+            <p class="flex items-center text-xl font-semibold text-green-700">
+              <span class="mr-1">⏰</span>
+              {{ timeRemaining }}
+            </p>
+          </div>
+        </div>
+        <p v-else class="text-center text-gray-500">All prayers for today have passed</p>
+      </div>
     </div>
 
-    <table class="w-full border-collapse mb-6">
-      <thead>
-        <tr class="bg-gray-200">
-          <th class="border p-2 text-left">Prayer Name</th>
-          <th class="border p-2 text-left">Time</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(time, schedule) in schedules" class="hover:bg-gray-100">
-          <td class="border p-2">{{ schedule }}</td>
-          <td class="border p-2">{{ time }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="space-y-4">
+      <h2 class="text-xl font-semibold text-green-800">Today's Prayer Times</h2>
 
+      <div v-for="(time, schedule) in schedules" :key="schedule" class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="p-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="mr-3 w-3 h-3 rounded-full" :class="time <= currentTime ? 'bg-green-500' : 'bg-gray-300'"></div>
+              <div>
+                <span class="font-medium">{{ schedule }}</span>
+              </div>
+            </div>
+            <span class="text-gray-500">{{ time }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
