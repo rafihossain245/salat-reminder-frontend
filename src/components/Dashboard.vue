@@ -3,7 +3,7 @@
     <!-- Header -->
     <header class="bg-gray-800 text-white p-4 flex justify-between items-center">
       <h1 class="text-xl">Dashboard</h1>
-      <img src="https://via.placeholder.com/150" alt="User Logo" class="h-10 w-10 rounded-full" />
+      <img src="#" alt="User Logo" class="h-10 w-10 rounded-full" />
     </header>
 
     <div class="flex flex-1">
@@ -90,7 +90,7 @@ const logout = async () => {
 
     router.push('/login'); // Redirect to login page
   } catch (error) {
-    alert('Failed to logout.');
+    console.log('Failed to logout', error);
   }
 };
 
