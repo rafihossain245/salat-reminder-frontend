@@ -33,17 +33,24 @@
           </div>
         </div>
       </div>
-  
-      <div v-if="selectedDayPrayers">
-        <h3>Prayers for {{ formattedSelectedDate }}</h3>
-        <ul>
-          <li v-for="prayer in prayerNames" :key="prayer">
-            <button @click="togglePrayerCompletion(prayer)">
-              {{ prayer }} - {{ selectedDayPrayers[prayer] ? 'Completed' : 'Incomplete' }}
+
+      <div v-if="selectedDayPrayers" class="mt-6 p-4 bg-white rounded-lg shadow-md">
+        <h3 class="text-lg font-semibold mb-4">Prayers for {{ formattedSelectedDate }}</h3>
+        <ul class="space-y-2">
+          <li v-for="prayer in prayerNames" :key="prayer" class="flex items-center justify-between p-2 border rounded">
+            <span class="font-medium">{{ prayer }}</span>
+            <button
+              @click="togglePrayerCompletion(prayer)"
+              :class="selectedDayPrayers[prayer] ? 'bg-green-500 text-white' : 'bg-red-500 text-white'"
+              class="px-4 py-2 rounded transition-colors"
+            >
+              {{ selectedDayPrayers[prayer] ? 'Completed' : 'Incomplete' }}
             </button>
           </li>
         </ul>
       </div>
+
+
     </div>
   </template>
   

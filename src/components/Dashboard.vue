@@ -13,6 +13,7 @@
           <li @click="setActivePage('profile')" :class="['p-2 cursor-pointer rounded transition-colors', activePage === 'profile' ? 'bg-teal-500' : 'hover:bg-gray-700']">Profile</li>
           <li @click="setActivePage('schedules')" :class="['p-2 cursor-pointer rounded transition-colors', activePage === 'schedules' ? 'bg-teal-500' : 'hover:bg-gray-700']">Schedules</li>
           <li @click="setActivePage('prayercalendar')" :class="['p-2 cursor-pointer rounded transition-colors', activePage === 'prayercalendar' ? 'bg-teal-500' : 'hover:bg-gray-700']">Prayer Calendar</li>
+          <li @click="setActivePage('qiblacompass')" :class="['p-2 cursor-pointer rounded transition-colors', activePage === 'qiblacompass' ? 'bg-teal-500' : 'hover:bg-gray-700']">Qibla Compass</li>
           <li @click="setActivePage('settings')" :class="['p-2 cursor-pointer rounded transition-colors', activePage === 'settings' ? 'bg-teal-500' : 'hover:bg-gray-700']">Settings</li>
           <li @click="logout" class="mt-5 text-red-500 cursor-pointer hover:bg-red-700 p-2 rounded">Logout</li>
         </ul>
@@ -30,6 +31,7 @@
       <button @click="setActivePage('profile')" class="p-2">Profile</button>
       <button @click="setActivePage('schedules')" class="p-2">Schedules</button>
       <button @click="setActivePage('prayercalendar')" class="p-2">Prayer Calendar</button>
+      <button @click="setActivePage('qiblacompass')" class="p-2">Qibla Compass</button>
       <button @click="setActivePage('settings')" class="p-2">Settings</button>
     </footer>
   </div>
@@ -40,6 +42,7 @@ import { ref, computed } from 'vue';
 import Profile from './Profile.vue';
 import Schedules from './Schedules.vue';
 import PrayerCalendar from './PrayerCalendar.vue';
+import QiblaCompass from './QiblaCompass.vue';
 import AdminSettings from './AdminSettings.vue';
 import { useRouter } from 'vue-router';
 import apiClient from '../../plugins/axios';
@@ -54,6 +57,7 @@ const components = {
   profile: Profile,
   schedules: Schedules,
   prayercalendar: PrayerCalendar,
+  qiblacompass: QiblaCompass,
   settings: AdminSettings,
 };
 
@@ -68,7 +72,9 @@ const pageTitle = computed(() => {
     case 'schedules':
       return 'Schedules';
     case 'prayercalendar':
-      return 'Prayer Calendar';
+      return 'PrayerCalendar';
+    case 'qiblacompass':
+      return 'QiblaCompass';
     case 'settings':
       return 'AdminSettings';
     default:

@@ -84,7 +84,6 @@ const filteredUpazilas = computed(() => {
 onMounted(async () => {
   try {
     const response = await apiClient.get('/profile');
-    console.log(response.data.locations);
     const userData = response.data.user;
     locations.value = response.data.locations; // Store locations data
 
